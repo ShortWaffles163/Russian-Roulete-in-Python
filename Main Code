@@ -1,3 +1,5 @@
+# Russain Roulete
+# On your turn, to shoot yourself, input 'me', or to shoot opponent, input 'opp'
 from random import randint
 
 death = 0
@@ -26,7 +28,7 @@ while death == 0 and turns < 10:
                     death = 1
                 else:
                     print('YOU SURVIVE!')
-    elif shot == 'you':
+    elif shot == 'opp':
         d = randint(1, 6)
         if d == 6:
             death = 2
@@ -54,4 +56,5 @@ if death == 1:
 elif death == 2:
     print('YOU WIN! QUICKLY COLLECT LOOT BEFORE COPS COME!!!')
 elif turns >= 10:
+    print('ITS A DRAW!')
     print('ITS A DRAW!')
