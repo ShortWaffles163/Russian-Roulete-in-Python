@@ -1,4 +1,4 @@
-# Russian Roulette: Shoot yourself ('me') or your opponent ('opp'). If you survive, the opponent gets one extra turn to shoot you or themselves. Game ends if someone dies or after 6 turns.
+# Russian Roulette: Shoot yourself ('me') or your opponent ('opp'). If you shoot your opponent and they survive, they get an extra chance to shoot you or themselves. Game ends if someone dies or after 6 turns.
 from random import randint
 
 death = 0
@@ -12,6 +12,7 @@ while death == 0 and turns < 6:
             death = 1
         else:
             print('YOU SURVIVE!')
+            # Opponent's extra turn
             opp_choice = randint(1, 2)
             if opp_choice == 1:
                 print('HE SHOT HIMSELF!')
@@ -33,6 +34,7 @@ while death == 0 and turns < 6:
             death = 2
         else:
             print('HE SURVIVED!')
+            # Opponent's extra turn
             opp_choice = randint(1, 2)
             if opp_choice == 1:
                 print('HE SHOT HIMSELF!')
@@ -41,6 +43,22 @@ while death == 0 and turns < 6:
                     death = 2
                 else:
                     print('HE SURVIVED!')
+                    # Opponent gets another extra turn
+                    opp_choice = randint(1, 2)
+                    if opp_choice == 1:
+                        print('HE SHOT HIMSELF AGAIN!')
+                        d = randint(1, 6)
+                        if d == 6:
+                            death = 2
+                        else:
+                            print('HE SURVIVED AGAIN!')
+                    else:
+                        print('HE SHOT YOU AGAIN!')
+                        d = randint(1, 6)
+                        if d == 6:
+                            death = 1
+                        else:
+                            print('YOU SURVIVE AGAIN!')
             else:
                 print('HE SHOT YOU!')
                 d = randint(1, 6)
@@ -48,6 +66,20 @@ while death == 0 and turns < 6:
                     death = 1
                 else:
                     print('YOU SURVIVE!')
+                    # Your extra turn
+                    shot = input('Shoot yourself, or opp? ')
+                    if shot == 'me':
+                        d = randint(1, 6)
+                        if d == 6:
+                            death = 1
+                        else:
+                            print('YOU SURVIVE!')
+                    elif shot == 'opp':
+                        d = randint(1, 6)
+                        if d == 6:
+                            death = 2
+                        else:
+                            print('HE SURVIVED!')
     turns += 1
 
 if death == 1:
