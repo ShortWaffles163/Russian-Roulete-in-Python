@@ -1,0 +1,57 @@
+from random import randint
+
+death = 0
+turns = 0
+
+while death == 0 and turns < 10:
+    shot = input('Shoot yourself, or opp? ')
+    if shot == 'me':
+        d = randint(1, 6)
+        if d == 6:
+            death = 1
+        else:
+            print('YOU SURVIVE!')
+            opp_choice = randint(1, 2)
+            if opp_choice == 1:
+                print('HE SHOT HIMSELF!')
+                d = randint(1, 6)
+                if d == 6:
+                    death = 2
+                else:
+                    print('HE SURVIVED!')
+            else:
+                print('HE SHOT YOU!')
+                d = randint(1, 6)
+                if d == 6:
+                    death = 1
+                else:
+                    print('YOU SURVIVE!')
+    elif shot == 'you':
+        d = randint(1, 6)
+        if d == 6:
+            death = 2
+        else:
+            print('HE SURVIVED!')
+            opp_choice = randint(1, 2)
+            if opp_choice == 1:
+                print('HE SHOT HIMSELF!')
+                d = randint(1, 6)
+                if d == 6:
+                    death = 2
+                else:
+                    print('HE SURVIVED!')
+            else:
+                print('HE SHOT YOU!')
+                d = randint(1, 6)
+                if d == 6:
+                    death = 1
+                else:
+                    print('YOU SURVIVE!')
+    turns += 1
+
+if death == 1:
+    print('YOU DIE!')
+elif death == 2:
+    print('YOU WIN! QUICKLY COLLECT LOOT BEFORE COPS COME!!!')
+elif turns >= 10:
+    print('ITS A DRAW!')
