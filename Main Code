@@ -1,11 +1,10 @@
-# Russain Roulete
-# On your turn, to shoot yourself, input 'me', or to shoot opponent, input 'opp'
+# Russian Roulette: Shoot yourself ('me') or your opponent ('opp'). If you survive, the opponent gets one extra turn to shoot you or themselves. Game ends if someone dies or after 6 turns.
 from random import randint
 
 death = 0
 turns = 0
 
-while death == 0 and turns < 10:
+while death == 0 and turns < 6:
     shot = input('Shoot yourself, or opp? ')
     if shot == 'me':
         d = randint(1, 6)
@@ -55,6 +54,5 @@ if death == 1:
     print('YOU DIE!')
 elif death == 2:
     print('YOU WIN! QUICKLY COLLECT LOOT BEFORE COPS COME!!!')
-elif turns >= 10:
-    print('ITS A DRAW!')
+elif turns >= 6:
     print('ITS A DRAW!')
